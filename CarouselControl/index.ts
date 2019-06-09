@@ -39,6 +39,10 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 	private _imageWidth: number | null;
 	private entityReference: EntityReference;
 
+	private _showIndicators: boolean;
+	private _showArrows: boolean;
+	private _showFilename: boolean;
+	private _showSlideAnimation: boolean;
 
 	private _supportedMimeTypes: string[] = ["image/jpeg", "image/png", "image/svg+xml"];
 
@@ -66,10 +70,15 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 		this._imageHeight = context.parameters.height != undefined ? context.parameters.height.raw : null;
 		this._imageWidth = context.parameters.width != undefined ? context.parameters.width.raw : null;
 
+		this._showArrows = this.GetShowHideValue(context.parameters.showArrows);
+		this._showIndicators = this.GetShowHideValue(context.parameters.showIndicators);
+		this._showFilename = this.GetShowHideValue(context.parameters.showFilename);
+		this._showSlideAnimation = this.GetShowHideValue(context.parameters.showSlideAnimation);
+
 		let carousel = document.createElement("div");
 		carousel.id = "demo";
 		carousel.classList.add("carousel");
-		if (context.parameters.slideAnimation == undefined || context.parameters.slideAnimation.raw == 1) { carousel.classList.add("slide"); }
+		if (this._showSlideAnimation) { carousel.classList.add("slide"); }
 		carousel.setAttribute("data-ride", "carousel");
 
 		this._carousel = carousel;
@@ -86,7 +95,7 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 
 		carousel.appendChild(indicatorList);
 		carousel.appendChild(slides);
-		this.AddNavigation();
+		if (this._showArrows) { this.AddNavigation(); }
 	}
 
 
@@ -133,17 +142,19 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 		if (this._imageHeight != null) { imgElement.height = this._imageHeight }
 		if (this._imageWidth != null) { imgElement.width = this._imageWidth }
 
-		let imageCaption = document.createElement("div");
-		imageCaption.classList.add("carousel-caption");
-
-		let fileName = document.createElement("h3");
-		fileName.textContent = file.fileName;
-
-		imageCaption.appendChild(fileName);
-		fileName.onclick = (e => { this.DownloadFile(file); });
-
 		carouselItem.appendChild(imgElement);
-		carouselItem.appendChild(imageCaption);
+
+		if(this._showFilename){
+			let imageCaption = document.createElement("div");
+			imageCaption.classList.add("carousel-caption");
+	
+			let fileName = document.createElement("h3");
+			fileName.textContent = file.fileName;
+			fileName.onclick = (e => { this.DownloadFile(file); });
+	
+			imageCaption.appendChild(fileName);
+			carouselItem.appendChild(imageCaption);
+		}
 
 		this._slides.appendChild(carouselItem);
 	}
@@ -211,7 +222,7 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 		}
 	}
 
-	private Base64ToFile(base64Data: string, tempfilename: string, contentType: string) {
+	private Base64ToFile(base64Data: string, tempfilename: string, contentType: string): File {
 		contentType = contentType || '';
 		const sliceSize = 1024;
 		const byteCharacters = atob(base64Data);
@@ -237,16 +248,29 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 		FileSaver.saveAs(myFile, file.fileName);
 	}
 
-	private BuildCarousel(files: AttachedFile[]) {
+	private BuildCarousel(files: AttachedFile[]): void {
 		for (let index = 0; index < files.length; index++) {
 			const file = files[index];
 
-			this.AddIndicator(index);
+			if (this._showIndicators) { this.AddIndicator(index);}
 			this.AddSlide(index, file);
 		}
 
 		if (files.length > 0) {
 			this._container.appendChild(this._carousel);
+		}
+	}
+
+	private GetShowHideValue(value: ComponentFramework.PropertyTypes.StringProperty | undefined): boolean {
+		if (value == undefined) {
+			return true;
+		} else {
+			if (value.raw == "1" || value.raw == "" || value.raw == null) {
+				return true;
+			} else if (value.raw == "0") {
+				return false;
+			}
+			return false;
 		}
 	}
 }

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="Fic" constructor="CarouselControl" version="1.0.32" display-name-key="Carousel Control" description-key="Carousel Control made with Bootstrap 4." control-type="standard">
+  <control namespace="Fic" constructor="CarouselControl" version="1.1.0" display-name-key="Carousel Control" description-key="Carousel Control made with Bootstrap 4." control-type="standard">
 
     <property name="dummyProperty" display-name-key="Dummy Field" description-key="Dummy Field" of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="height" display-name-key="Height(px)" description-key="Height of images in pixels" of-type="Whole.None" usage="input" required="false" />
     <property name="width" display-name-key="Width(px)" description-key="Width of images in pixels" of-type="Whole.None" usage="input" required="false" />
-    <property name="slideAnimation" display-name-key="Slide Animation" description-key="Turn on(1) or off(0) slide animation. Slide animation is activated by default." of-type="Whole.None" usage="input" required="false" />
+    <property name="showSlideAnimation" display-name-key="Slide Animation" description-key="Turn on(1) or off(0) slide animation. Slide animation is activated by default." of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="showIndicators" display-name-key="Show Indicators" description-key="Show(1) or hide(0) indicators. Indicators are shown by default." of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="showArrows" display-name-key="Show Navigation Arrows" description-key="Show(1) or hide(0) navigation arrows. Navigation arrows are shown by default." of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="showFilename" display-name-key="Show Filename" description-key="Show(1) or hide(0) filename. Filename is shown by default." of-type="SingleLine.Text" usage="input" required="false" />
 
     <resources>
       <code path="index.ts" order="1"/>
