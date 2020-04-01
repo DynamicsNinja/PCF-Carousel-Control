@@ -45,6 +45,7 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 	private _showSlideAnimation: boolean;
 
 	private _supportedMimeTypes: string[] = ["image/jpeg", "image/png", "image/svg+xml"];
+	private _supportedExtensions : string[] = [".jpg", ".jpeg", ".png", ".svg", ".gif"];
 
 	constructor() {
 
@@ -188,11 +189,11 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 		let attachmentType = ref.typeName == "email" ? "activitymimeattachment" : "annotation";
 		let fetchXml =
 			"<fetch>" +
-			"  <entity name='" + attachmentType + "'>" +
-			"    <filter>" +
-			"      <condition attribute='objectid' operator='eq' value='" + ref.id + "'/>" +
-			"    </filter>" +
-			"  </entity>" +
+				"<entity name='" + attachmentType + "'>" +
+					"<filter>" +
+						"<condition attribute='objectid' operator='eq' value='" + ref.id + "'/>" +
+					"</filter>" +
+				"</entity>" +
 			"</fetch>";
 
 		let query = '?fetchXml=' + encodeURIComponent(fetchXml);
@@ -207,7 +208,10 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 				let content = <string>record["body"] || <string>record["documentbody"];
 				let fileSize = <number>record["filesize"];
 
-				if (!this._supportedMimeTypes.includes(mimeType)) { continue; }
+				const ext = fileName.substr(fileName.lastIndexOf('.')).toLowerCase();
+				if (!this._supportedMimeTypes.includes(mimeType) && 
+					!this._supportedExtensions.includes(ext)) 
+				{ continue; }
 
 				let file = new AttachedFile(fileName, mimeType, content, fileSize);
 				items.push(file);
