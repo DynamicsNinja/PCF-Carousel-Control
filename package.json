@@ -11,14 +11,14 @@
   "dependencies": {
     "@types/file-saver": "^2.0.1",
     "@types/node": "^10.12.18",
-    "@types/powerapps-component-framework": "1.1.0",
+    "@types/powerapps-component-framework": "^1.2.0",
     "bootstrap": "^4.3.1",
     "file-saver": "^2.0.2",
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0"
   },
   "devDependencies": {
-    "pcf-scripts": "~0",
-    "pcf-start": "~0"
+    "pcf-scripts": "^1",
+    "pcf-start": "^1"
   }
 }
