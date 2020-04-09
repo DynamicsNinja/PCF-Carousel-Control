@@ -97,6 +97,8 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 		carousel.appendChild(indicatorList);
 		carousel.appendChild(slides);
 		if (this._showArrows) { this.AddNavigation(); }
+		this.GetFiles(this.entityReference).then(result => this.BuildCarousel(result));
+		
 	}
 
 
@@ -104,8 +106,8 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 	 * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
 	 * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
 	 */
-	public updateView(context: ComponentFramework.Context<IInputs>): void {
-		this.GetFiles(this.entityReference).then(result => this.BuildCarousel(result));
+	public updateView(context: ComponentFramework.Context<IInputs>): void {		
+		
 	}
 
 	/** 

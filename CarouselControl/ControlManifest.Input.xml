@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="Fic" constructor="CarouselControl" version="1.1.1" display-name-key="Carousel Control" description-key="Carousel Control made with Bootstrap 4." control-type="standard">
+  <control namespace="Fic" constructor="CarouselControl" version="1.1.2" display-name-key="Carousel Control" description-key="Carousel Control made with Bootstrap 4." control-type="standard">
 
     <property name="dummyProperty" display-name-key="Dummy Field" description-key="Dummy Field" of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="height" display-name-key="Height(px)" description-key="Height of images in pixels" of-type="Whole.None" usage="input" required="false" />
