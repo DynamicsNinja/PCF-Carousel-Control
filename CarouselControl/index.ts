@@ -194,6 +194,7 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 				"<entity name='" + attachmentType + "'>" +
 					"<filter>" +
 						"<condition attribute='objectid' operator='eq' value='" + ref.id + "'/>" +
+						"<condition attribute='filesize' operator='gt' value='0'/>" +
 					"</filter>" +
 				"</entity>" +
 			"</fetch>";
@@ -211,19 +212,16 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 				let fileSize = <number>record["filesize"];
 
 				const ext = fileName.substr(fileName.lastIndexOf('.')).toLowerCase();
-				if (!this._supportedMimeTypes.includes(mimeType) && 
-					!this._supportedExtensions.includes(ext)) 
-				{ continue; }
+
+				if (!this._supportedMimeTypes.includes(mimeType) && !this._supportedExtensions.includes(ext)) { continue; }
 
 				let file = new AttachedFile(fileName, mimeType, content, fileSize);
 				items.push(file);
 			}
-			debugger;
 			return items;
 		}
 		catch (error) {
 			console.log(error);
-			debugger;
 			return [];
 		}
 	}

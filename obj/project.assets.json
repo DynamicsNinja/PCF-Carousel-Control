@@ -1,8 +1,8 @@
 {
   "version": 3,
   "targets": {
-    ".NETFramework,Version=v4.0": {
-      "Microsoft.PowerApps.MSBuild.Pcf/0.2.59": {
+    ".NETFramework,Version=v4.6.2": {
+      "Microsoft.PowerApps.MSBuild.Pcf/1.2.6": {
         "type": "package",
         "build": {
           "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
@@ -10,8 +10,8 @@
         }
       }
     },
-    ".NETFramework,Version=v4.0/win": {
-      "Microsoft.PowerApps.MSBuild.Pcf/0.2.59": {
+    ".NETFramework,Version=v4.6.2/win": {
+      "Microsoft.PowerApps.MSBuild.Pcf/1.2.6": {
         "type": "package",
         "build": {
           "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
@@ -19,8 +19,8 @@
         }
       }
     },
-    ".NETFramework,Version=v4.0/win-x64": {
-      "Microsoft.PowerApps.MSBuild.Pcf/0.2.59": {
+    ".NETFramework,Version=v4.6.2/win-x64": {
+      "Microsoft.PowerApps.MSBuild.Pcf/1.2.6": {
         "type": "package",
         "build": {
           "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
@@ -28,8 +28,8 @@
         }
       }
     },
-    ".NETFramework,Version=v4.0/win-x86": {
-      "Microsoft.PowerApps.MSBuild.Pcf/0.2.59": {
+    ".NETFramework,Version=v4.6.2/win-x86": {
+      "Microsoft.PowerApps.MSBuild.Pcf/1.2.6": {
         "type": "package",
         "build": {
           "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
@@ -39,10 +39,10 @@
     }
   },
   "libraries": {
-    "Microsoft.PowerApps.MSBuild.Pcf/0.2.59": {
-      "sha512": "lR9n5cKLOHIW40uHCQSyQmXIplLHNis5IqJ6OE+r1EL/ZJNl3eUtleNvJmbVVDcejIp19vGDvpuxfBpj+oPXjg==",
+    "Microsoft.PowerApps.MSBuild.Pcf/1.2.6": {
+      "sha512": "SSNU29umx3MZJ47LyD+ybbaO0QhkUnywSvIuqllK2v9iv2lKXy4+DAZySSyqmZl3s86tIW1NJtWqQEZ0bYdcYg==",
       "type": "package",
-      "path": "microsoft.powerapps.msbuild.pcf/0.2.59",
+      "path": "microsoft.powerapps.msbuild.pcf/1.2.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -50,14 +50,14 @@
         "LICENSE.txt",
         "build/Microsoft.PowerApps.MSBuild.Pcf.props",
         "build/Microsoft.PowerApps.MSBuild.Pcf.targets",
-        "microsoft.powerapps.msbuild.pcf.0.2.59.nupkg.sha512",
+        "microsoft.powerapps.msbuild.pcf.1.2.6.nupkg.sha512",
         "microsoft.powerapps.msbuild.pcf.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
-    ".NETFramework,Version=v4.0": [
-      "Microsoft.PowerApps.MSBuild.Pcf >= 0.*"
+    ".NETFramework,Version=v4.6.2": [
+      "Microsoft.PowerApps.MSBuild.Pcf >= 1.*"
     ]
   },
   "packageFolders": {
@@ -72,29 +72,28 @@
       "packagesPath": "C:\\Users\\ivanf\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\ivanf\\Source\\Repos\\PCFCarouselControl\\obj\\",
       "projectStyle": "PackageReference",
-      "skipContentFileWrite": true,
       "configFilePaths": [
         "C:\\Users\\ivanf\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net40"
+        "net462"
       ],
       "sources": {
         "https://www.nuget.org/api/v2/": {}
       },
       "frameworks": {
-        "net40": {
+        "net462": {
           "projectReferences": {}
         }
       }
     },
     "frameworks": {
-      "net40": {
+      "net462": {
         "dependencies": {
           "Microsoft.PowerApps.MSBuild.Pcf": {
             "target": "Package",
-            "version": "[0.*, )"
+            "version": "[1.*, )"
           }
         }
       }

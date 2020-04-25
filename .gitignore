@@ -9,5 +9,12 @@
 # output directory
 /out
 
-# solution directory
+# msbuild output directories
+/bin
+/obj
+
+# solutions directory
 /solution
+
+# .vscode directory
+/.vscode

@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "@types/file-saver": "^2.0.1",
-    "@types/node": "^10.12.18",
+    "@types/node": "^10.17.21",
     "@types/powerapps-component-framework": "^1.2.0",
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^4.4.1",
     "file-saver": "^2.0.2",
-    "jquery": "^3.4.1",
-    "popper.js": "^1.15.0"
+    "jquery": "^3.5.0",
+    "popper.js": "^1.16.1"
   },
   "devDependencies": {
     "pcf-scripts": "^1",
